@@ -1,0 +1,15 @@
+server:
+  port: 0
+spring:
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.cloud.consul.host}:${spring.application.name}:${random.int[1,99]}
+      config:
+        format: yaml
+      host: localhost
+  application:
+    name: pizzaorder-service
+  config:
+    import: consul:localhost:8500
